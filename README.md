@@ -19,7 +19,7 @@ This project is a ChatGPT Clone implemented using Streamlit and Google's Generat
 
 ### Prerequisites
 
-- Python 3.6 or higher
+- Python 3.11 or higher
 - Install required packages using `requirements.txt`
 
 ```bash```
