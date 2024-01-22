@@ -9,8 +9,10 @@ __pycache__/
 .Scripts
 .pyvenv.cfg
 .include
+.Gpt_Clone.egg-info
 # Distribution / packaging
 .Python
+.etc
 build/
 develop-eggs/
 dist/

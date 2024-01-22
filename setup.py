@@ -9,7 +9,7 @@ def get_packages(file_path:str)->List[str]:
     with open(file_path) as f:
         packages=f.readlines()
         # remove the escape squence char("\n")
-        packages=[pkg.replace("\n","") for pkg in packages]
+        packages=[pkg.strip() for pkg in packages]
         if(HIFEN in packages):
             packages.remove(HIFEN)
     return packages
@@ -23,6 +23,6 @@ setup(
     description='Build a end to end project on titanic dataset with complete dash-board and webapp',
     url='https://github.com/Sami606713/Chat_Gpt_Clone.git',
     packages=find_packages(),
-    install_requires=get_packages("requrienments.txt")
+    install_requires=get_packages("requirements.txt")
 
 )
