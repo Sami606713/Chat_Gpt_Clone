@@ -1,4 +1,5 @@
 import google.generativeai as genai
+from PIL import Image
 api_key="AIzaSyCXEwoavVZD14DNMOf-_I6Wtm3QFvFiu34"
 genai.configure(api_key=api_key)
 
@@ -39,6 +40,14 @@ def Response(text):
 
     chat.send_message(text)
     return chat.last.text
+
+# load image
+def load_img(file_path):
+    try:
+        img=Image.open(file_path)
+        return img
+    except FileNotFoundError:
+        return f"file not found {file_path}"
 
 # if __name__=="__main__":
 #     print(Response("who are you"))
