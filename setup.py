@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-# apikey=AIzaSyCXEwoavVZD14DNMOf-_I6Wtm3QFvFiu34
 from typing import List
 HIFEN="-e ."
 def get_packages(file_path:str)->List[str]:
