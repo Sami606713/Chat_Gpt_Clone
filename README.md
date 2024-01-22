@@ -43,7 +43,7 @@ Run the main application script to start the ChatGPT Clone web app:
 python app.py
 
 ## Coustimization
-Logo: You can customize the project logo by replacing the image file located at images/logo/chet.jpeg.
+`Logo:` You can customize the project logo by replacing the image file located at images/logo/chet.jpeg.
 
 ChatGPT Response Logic: Adjust the logic for generating responses in the Response function within utils.py.
 
