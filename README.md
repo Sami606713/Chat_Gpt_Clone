@@ -29,13 +29,13 @@ pip install -r requirements.txt
 python setup.py install
 
 ## Project Structure
-setup.py: Script for installing the project as a Python package.
+`setup.py:` Script for installing the project as a Python package.
 
-requirements.txt: List of Python packages required for the project.
+`requirements.txt:` List of Python packages required for the project.
 
-app.py: Main application script that implements the ChatGPT Clone.
+`app.py:` Main application script that implements the ChatGPT Clone.
 
-utils.py: Utility module containing functions like Response and load_img.
+`utils.py:` Utility module containing functions like Response and load_img.
 
 ## Usage
 Run the main application script to start the ChatGPT Clone web app:
