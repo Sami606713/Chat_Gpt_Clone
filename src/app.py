@@ -13,7 +13,7 @@ def main():
     with st.container():
         with st.container():
             st.image(logo_img, caption="ChatGPT Clone", use_column_width=False)
-            st.title("Chat Gpt Clone")
+            st.markdown("<h1 style='text-align: center;'>ChatGPT Clone</h1>", unsafe_allow_html=True)
 
     # make a empty chat list that can store the chat 
     user_input=st.chat_input("Enter your text: ")
@@ -23,7 +23,7 @@ def main():
         
         with st.spinner("waiting for chatgpt response...."):
             try:
-                response=Response(f"find best result of this input: {user_input}")
+                response=Response(f"{user_input}")
             except Exception as e:
                 response=e
 
