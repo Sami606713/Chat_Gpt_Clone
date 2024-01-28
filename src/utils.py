@@ -65,24 +65,27 @@ def file_csv(file):
     except Exception as e:
         return e
 
+def file_py(file):
+    with open(file,"r") as f:
+        content=f.readlines()
+    return content
+    # return st.code(file.read().decode("utf-8"),language="python")
 def process_file(file):
     with st.spinner("Processing file...."):
         if file is None:
             st.warning("Please upload a file.")
             return
 
-        if file.type=="text/csv":
+        elif file.type=="text/csv":
             return file_csv(file)
         elif file.type=="image/jpeg":
-            return st.image(load_img(file))
-        elif file.type=="text/txt":
+            st.image(load_img(file))
+            return load_img(file)
+        elif file.type=="text/plain":
+            print("file reading")
             content=file.read().decode("utf-8")
-            st.code(content,language="plaintext")
-
+            st.code(content, language="plaintext")
+            # print(":Reaing succes",content)
             return content
-        
-
-
-
-# if __name__=="__main__":
-#     print(Response("who are you"))
+        else:
+            return "Not reading"
