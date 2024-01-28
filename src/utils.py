@@ -1,5 +1,7 @@
 import google.generativeai as genai
 from PIL import Image
+import pandas as pd
+import streamlit as st
 api_key="AIzaSyCXEwoavVZD14DNMOf-_I6Wtm3QFvFiu34"
 genai.configure(api_key=api_key)
 
@@ -48,6 +50,20 @@ def load_img(file_path):
         return img
     except FileNotFoundError:
         return f"file not found {file_path}"
+
+
+def process_file(file):
+    # st.spinner("Processing file....")
+    
+    if file is None:
+        st.warning("Please upload a file.")
+        return
+
+    if file.type=="text/csv":
+        df=pd.read_csv(file)
+        st.dataframe(df)
+
+
 
 # if __name__=="__main__":
 #     print(Response("who are you"))
