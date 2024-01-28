@@ -52,19 +52,35 @@ def load_img(file_path):
         return f"file not found {file_path}"
 
 
-def process_file(file):
-    # st.spinner("Processing file....")
-    
-    if file is None:
-        st.warning("Please upload a file.")
-        return
-
-    if file.type=="text/csv":
+def file_csv(file):
+    try:
         df=pd.read_csv(file)
-        
+
         st.dataframe(df)
 
         return df
+    except pd.errors.EmptyDataError:
+        st.warning("The CSV file is empty.")
+        return None
+    except Exception as e:
+        return e
+
+def process_file(file):
+    with st.spinner("Processing file...."):
+        if file is None:
+            st.warning("Please upload a file.")
+            return
+
+        if file.type=="text/csv":
+            return file_csv(file)
+        elif file.type=="image/jpeg":
+            return st.image(load_img(file))
+        elif file.type=="text/txt":
+            content=file.read().decode("utf-8")
+            st.code(content,language="plaintext")
+
+            return content
+        
 
 
 

@@ -16,16 +16,24 @@ def main():
             st.markdown(f"<h1 style='text-align: center;'>Gpt-Clone</h1>", unsafe_allow_html=True)
 
     # make a empty chat list that can store the chat
-    user_input=st.chat_input("Enter your text: ") 
-    file=st.file_uploader("",type=["csv"])
+    col1, col2 = st.columns(2)
+
+    # Input field
+    # with col1:
+        # user_input = st.chat_input("Enter your text: ")
+
+    # File uploader
+    # with col2:
+    file = st.file_uploader("", type=["csv","jpg","txt"])
+    user_input = st.chat_input("Enter your text: ")
     with st.container(): 
-        df=process_file(file)
-        if(user_input and df is not None):
+        transform_file=process_file(file)
+        if(user_input and transform_file is not None):
             st.write(user_input) 
             
             with st.spinner("waiting for chatgpt response...."):
                 try:
-                    response=Response(f"{df}{user_input}")
+                    response=Response(f"{transform_file} {user_input}")
                 except Exception as e:
                     response=e
 
