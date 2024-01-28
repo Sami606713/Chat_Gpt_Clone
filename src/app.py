@@ -19,13 +19,13 @@ def main():
     user_input=st.chat_input("Enter your text: ") 
     file=st.file_uploader("",type=["csv"])
     with st.container(): 
-        process_file(file)
-        if(user_input):
+        df=process_file(file)
+        if(user_input and df is not None):
             st.write(user_input) 
             
             with st.spinner("waiting for chatgpt response...."):
                 try:
-                    response=Response(f"{user_input}")
+                    response=Response(f"{df}{user_input}")
                 except Exception as e:
                     response=e
 

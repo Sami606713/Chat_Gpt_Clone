@@ -61,7 +61,10 @@ def process_file(file):
 
     if file.type=="text/csv":
         df=pd.read_csv(file)
+        
         st.dataframe(df)
+
+        return df
 
 
 
