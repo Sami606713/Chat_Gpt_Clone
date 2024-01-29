@@ -27,10 +27,11 @@ def main():
     file = st.file_uploader("", type=["csv","jpg","txt","py","js"])
     user_input = st.chat_input("Enter your text: ")
     with st.container(): 
-        if process_file(file)!=None:
-            transform_file=process_file(file)
-        else:
+        transform_file=process_file(file)
+        if process_file(file)==None:
             transform_file=""
+        else:
+            transform_file=process_file(file)
         print(transform_file)
         if(user_input and transform_file is not None):
             st.write(user_input) 
