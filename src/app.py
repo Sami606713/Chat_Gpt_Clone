@@ -18,21 +18,15 @@ def main():
     # make a empty chat list that can store the chat
     col1, col2 = st.columns(2)
 
-    # Input field
-    # with col1:
-        # user_input = st.chat_input("Enter your text: ")
-
-    # File uploader
-    # with col2:
-    file = st.file_uploader("", type=["csv","jpg","txt","py","js"])
+    file = st.file_uploader("", type=["csv"])
     user_input = st.chat_input("Enter your text: ")
     with st.container(): 
         transform_file=process_file(file)
-        if process_file(file)==None:
-            transform_file=""
+        if(transform_file is not None):
+            transform_file=transform_file    
         else:
-            transform_file=process_file(file)
-        print(transform_file)
+            transform_file=""
+        # print(transform_file)
         if(user_input and transform_file is not None):
             st.write(user_input) 
             

@@ -59,16 +59,16 @@ def file_csv(file):
         st.dataframe(df)
 
         return df
-    except pd.errors.EmptyDataError:
-        st.warning("The CSV file is empty.")
-        return None
+    # except pd.errors.EmptyDataError:
+    #     st.warning("The CSV file is empty.")
+    #     return None
     except Exception as e:
         return e
 
-def file_py(file):
-    with open(file,"r") as f:
-        content=f.readlines()
-    return content
+# def file_py(file):
+#     with open(file,"r") as f:
+#         content=f.readlines()
+#     return content
     # return st.code(file.read().decode("utf-8"),language="python")
 def process_file(file):
     with st.spinner("Processing file...."):
@@ -78,14 +78,14 @@ def process_file(file):
 
         elif file.type=="text/csv":
             return file_csv(file)
-        elif file.type=="image/jpeg":
-            st.image(load_img(file))
-            return load_img(file)
-        elif file.type=="text/plain":
-            print("file reading")
-            content=file.read().decode("utf-8")
-            st.code(content, language="plaintext")
-            # print(":Reaing succes",content)
-            return content
+        # elif file.type=="image/jpeg":
+        #     st.image(load_img(file))
+        #     return load_img(file)
+        # elif file.type=="text/plain":
+        #     print("file reading")
+        #     content=file.read().decode("utf-8")
+        #     st.code(content, language="plaintext")
+        #     # print(":Reaing succes",content)
+        #     return content
         else:
             return "Not reading"
