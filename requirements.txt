@@ -1,4 +1,45 @@
-streamlit
+streamlit==1.3.0
 google-generativeai
 setuptools
 pillow
+
+
+
+import streamlit as st
+from utils import Response, load_img, process_file
+# from PIL import Image
+
+# Initialize the chat history in session state
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+def main():
+    # load the image so I can use it later
+    logo_img = load_img("images/logo/chet.jpeg")
+    
+    # Set the main container for chat input
+    with st.container():
+        with st.container():
+            st.image(logo_img, caption="ChatGPT Clone", use_column_width=False)
+            st.markdown(f"<h1 style='text-align: center;'>Gpt-Clone</h1>", unsafe_allow_html=True)
+
+    # Make an empty chat list that can store the chat
+    col1, col2 = st.columns(2)
+
+    # File uploader
+    # file = st.file_uploader("", type=["csv"])
+
+    # Chat input field
+    user_input = st.chat_input("Enter your text: ")
+
+    # Process user input and generate response
+    with st.container():
+        try:
+            response = Response(f"{user_input}")
+            st.write_stream(response)
+        except Exception as e:
+            st.error("An error occurred during response generation.")
+            st.write(e)
+
+if __name__ == "__main__":
+    main()
